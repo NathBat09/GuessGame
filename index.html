@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <audio src = "sound/Correct.mp3" id = "correct"></audio>
+    <audio src = "sound/Lose.mp3" id = "lose"></audio>
+    <audio src = "sound/Theme.mp3" loop = "true" id = "theme"></audio>
+    <audio src = "sound/Victory.mp3" id = "victory"></audio>
+    <audio src = "sound/Wrong.mp3" id = "wrong"></audio>
+    <audio src = "sound/Button.mp3" id = "button"></audio>
+    <audio src = "sound/regularTick.mp3" loop = "true" id = "regular"></audio>
+    <audio src = "sound/finalTick.mp3" loop = "true" id = "final"></audio>
+    <audio src = "sound/pop.mp3" id = "pop"></audio>
+</head>
+<body style = "background-color: white">
+    <div id = "container">
+        <div style = "text-align: center" id = "presentation" >
+            <img src="images/G (2).png" id = "beg" alt="This is a clown" height="800px">
+            <button id = "start">START</button>
+        </div>
+        <div style = "text-align: center" id = "instructions" >
+            <img src="images/RULES (1).png" alt="This is a clown" height="800px">
+            <button id = "play">PLAY</button>
+
+        </div>
+        <div style = "text-align: center" id = "winner">
+            <button id = "nextWord">NEXT WORD</button>
+            <img src="images/WINNER.png" alt="This is a clown" height="770px" width="950px">
+        </div>
+        <div style = "text-align: center" id = "loser">
+            <button id = "again">TRY AGAIN</button>
+            <img src="images/LOSER.png" alt="This is a clown" height="770px" width="950px">
+        </div>
+        <div style = "text-align: center" id = gameContainer>
+            <div style = "text-align: center" id = detective>
+                <img src="images/detec.png" alt="This is a clown" height="300px" width="5350%">
+            </div>
+            <h1 style = "text-align: center" id = "Title">GUESS GAME</h1>
+            <br>
+            <h1 style = "text-align: center" id = "letterchances">CHANCES TO GUESS A LETTER: 10</h1>
+            <h1 style = "text-align: center" id = "wordchances">CHANCES TO GUESS THE ANSWER: 2</h1>
+            <br>
+            <h1 style = "text-align: center" id = "Word">""</h1>
+            <br>
+            <div id = "timeDisplay">00:00</div>
+            <br>
+            <h1 style = "text-align: center" id = "lines">WE NEED THE PASSWORD! </h1>
+            <input id = "guessField">
+            <br>
+            <br>
+            <button id = "guessLetter" class = "action">GUESS ONE LETTER</button>
+            <button id = "guessWord" class = "action">GUESS THE ANSWER</button>
+            <button id = "hint" class = "action">GET A HINT!</button>
+            
+        </div>
+    </div>
+    <script src = "GuessGame.js"></script> 
+</body>
+</html>
