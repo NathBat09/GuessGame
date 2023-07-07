@@ -39,7 +39,6 @@ const final = document.getElementById('final')
 const pop = document.getElementById('pop')
 
 theme.volume = 0.3;
-theme.play()
 
 regular.volume = 1;
 
@@ -62,6 +61,7 @@ display(chars);
 if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
 
     start.addEventListener("click", () => {
+        theme.play()
         button.play()
         button.currentTime = 0;
         startDisplay.style.display = 'none';
