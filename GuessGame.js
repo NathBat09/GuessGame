@@ -460,6 +460,8 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         }
 
         display(chars);
+
+         already = [];
     });
 
     again.addEventListener("click", () => {
@@ -520,6 +522,8 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         }
 
         display(chars);
+
+         already = [];
     });
 
 }
