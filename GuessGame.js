@@ -1,11 +1,11 @@
 let options = ["hairbrush","scissors","book","phone","ears","eyes","hammer","toothbrush","airplane","flashlight","elephant","tiger","lion","hair","basketball","baseball","spoon","guitar","happy","beach","football","photographer","drink","dinosaur","candle","rainbow","bicycle","telescope","microphone", "balloon","backpack","watermelon","umbrella","sandwich","crocodile","pancake","watch","cactus","helicopter","pizza","dolphin","lighthouse","butterfly","snowflake","ladybug","pineapple","coconut","mushroom", "feather", "whistle","chameleon","suitcase","pinecone","waterfall","zebra","galaxy","tornado","treasure","adventure","popcorn","giraffe","compass","seashell","fireworks","marshmallow","dragon","jellyfish","mosquito"];
+let already = [];
 let answer = options[Math.floor(Math.random()*options.length)];
-console.log(answer);
 let lines = "";
 let word = "";
 let letter = "";
-let wordlimit = 2;
-let letterlimit = 10;
+let wordlimit = 3;
+let letterlimit = 11;
 const guessWord = document.querySelector("#guessWord");
 const linesNumber = document.querySelector("#lines");
 const answerWord = document.querySelector("#Word");
@@ -89,12 +89,13 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         letter = document.getElementById("guessField").value;
         letter = letter.toLowerCase();
         let letterGuess = false;
-        if(letter.length == 1){
+        if(letter.length == 1 && !already.includes(letter)){
+            already.push(letter);
+            letterchances.textContent = "CHANCES TO GUESS A LETTER: " + (letterlimit-1);
             letterlimit-=1;
-            letterchances.textContent = "CHANCES TO GUESS A LETTER: " + letterlimit;
+            letterchances.textContent = "CHANCES TO GUESS A LETTER: " + (letterlimit-1);
             for(let i = 0; i<answer.length; i++){
                 if(answer[i].toLowerCase()==letter){
-                    console.log("sucess")
                     chars[i] = letter;
                     linesNumber.textContent = "RIGHT GUESS!";
                     correct.play();
@@ -108,6 +109,8 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
                 wrong.play();
                 wrong.currentTime = 0;
             }
+        } else if((letter.length == 1 && already.includes(letter))){
+            linesNumber.textContent = "YOU ALREADY INTRODUCED THAT LETTER"
         } else if(letter.length > 1){
             linesNumber.textContent = "TOO LONG FOR A LETTER!";
         } else{
@@ -136,8 +139,9 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
     guessWord.addEventListener("click", () => {
         word = document.getElementById("guessField").value;
         if(word.length==answer.length){
+            wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + (wordlimit-1);
             wordlimit-=1;
-            wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + wordlimit;
+            wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + (wordlimit-1);
         }
         if(word.toLowerCase() == answer.toLowerCase()){
             linesNumber.textContent = "WE NEED THE PASSWORD!"
@@ -416,12 +420,10 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         timeDisplay.textContent = "00:00";
         letterGuess = false;
         answer = options[Math.floor(Math.random()*options.length)];
-        console.clear;
-        console.log(answer);
         chars = [];
         paused = true;
-        wordlimit = 2;
-        letterlimit = 10;
+        wordlimit = 3;
+        letterlimit = 11;
         timeDisplay.style.color = "black";
         letterchances.textContent = "CHANCES TO GUESS A LETTER: " + letterlimit;
         wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + wordlimit;
@@ -478,12 +480,10 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         timeDisplay.textContent = "00:00";
         letterGuess = false;
         answer = options[Math.floor(Math.random()*options.length)];
-        console.clear;
-        console.log(answer);
         chars = [];
         paused = true;
-        wordlimit = 2;
-        letterlimit = 10;
+        wordlimit = 3;
+        letterlimit = 11;
         timeDisplay.style.color = "black";
         letterchances.textContent = "CHANCES TO GUESS A LETTER: " + letterlimit;
         wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + wordlimit;
@@ -550,7 +550,7 @@ function updateTime(){
         final.play();
     }
 
-    if((mins>=1 && secs>=30 || letterlimit <= 0 || wordlimit <= 0) && !paused){
+    if((mins>=1 && secs>=30 || (letterlimit <= 0 && wordlimit <= 0)) && !paused){
         paused = true;
         linesNumber.textContent = "WE NEED THE PASSWORD!"
         regular.pause();
