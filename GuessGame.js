@@ -1,6 +1,7 @@
 let options = ["hairbrush","scissors","book","phone","ears","eyes","hammer","toothbrush","airplane","flashlight","elephant","tiger","lion","hair","basketball","baseball","spoon","guitar","happy","beach","football","photographer","drink","dinosaur","candle","rainbow","bicycle","telescope","microphone", "balloon","backpack","watermelon","umbrella","sandwich","crocodile","pancake","watch","cactus","helicopter","pizza","dolphin","lighthouse","butterfly","snowflake","ladybug","pineapple","coconut","mushroom", "feather", "whistle","chameleon","suitcase","pinecone","waterfall","zebra","galaxy","tornado","treasure","adventure","popcorn","giraffe","compass","seashell","fireworks","marshmallow","dragon","jellyfish","mosquito"];
 let already = [];
 let answer = options[Math.floor(Math.random()*options.length)];
+console.log(answer);
 let lines = "";
 let word = "";
 let letter = "";
@@ -96,6 +97,7 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
             letterchances.textContent = "CHANCES TO GUESS A LETTER: " + (letterlimit-1);
             for(let i = 0; i<answer.length; i++){
                 if(answer[i].toLowerCase()==letter){
+                    console.log("sucess")
                     chars[i] = letter;
                     linesNumber.textContent = "RIGHT GUESS!";
                     correct.play();
@@ -420,13 +422,15 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         timeDisplay.textContent = "00:00";
         letterGuess = false;
         answer = options[Math.floor(Math.random()*options.length)];
+        console.clear;
+        console.log(answer);
         chars = [];
         paused = true;
         wordlimit = 3;
         letterlimit = 11;
         timeDisplay.style.color = "black";
-        letterchances.textContent = "CHANCES TO GUESS A LETTER: " + letterlimit;
-        wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + wordlimit;
+        letterchances.textContent = "CHANCES TO GUESS A LETTER: 10";
+        wordchances.textContent = "CHANCES TO GUESS THE ANSWER: 2";
         //music
         correct.pause()
         correct.currentTime = 0;
@@ -461,7 +465,7 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
 
         display(chars);
 
-         already = [];
+        already = [];
     });
 
     again.addEventListener("click", () => {
@@ -482,13 +486,15 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
         timeDisplay.textContent = "00:00";
         letterGuess = false;
         answer = options[Math.floor(Math.random()*options.length)];
+        console.clear;
+        console.log(answer);
         chars = [];
         paused = true;
         wordlimit = 3;
         letterlimit = 11;
         timeDisplay.style.color = "black";
-        letterchances.textContent = "CHANCES TO GUESS A LETTER: " + letterlimit;
-        wordchances.textContent = "CHANCES TO GUESS THE ANSWER: " + wordlimit;
+        letterchances.textContent = "CHANCES TO GUESS A LETTER: 10";
+        wordchances.textContent = "CHANCES TO GUESS THE ANSWER: 2";
         //music
         correct.pause()
         correct.currentTime = 0;
@@ -523,7 +529,7 @@ if(mins<1 && secs<30 && letterlimit > 0 && wordlimit > 0){
 
         display(chars);
 
-         already = [];
+        already = [];
     });
 
 }
